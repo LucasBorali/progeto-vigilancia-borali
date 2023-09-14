@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 10vh ;
+    align-items: center;
+   
+}
+
+.logo-container img {
+    width: 52px;
+}
+
+.login-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.login-links a  {
+    border: 2px solid #252424cc;
+    padding: 7px;
+    font-weight: bold;
+    transition: 0.2s;
+    border-radius: 10px;
+}
+
+.login-links a:hover {
+    background-color: #252424cc;
+    color: #fff;
+}
+
+.login-links a:last-child {
+    background-color: rgb(255, 124, 48);
+    color: #ffff;
+    border: none;
+}
+
+.login-links a:last-child:hover {
+    background-color: red;
+}
