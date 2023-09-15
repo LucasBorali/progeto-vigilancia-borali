@@ -5,6 +5,8 @@ import RootLayout from './Pages/RootLayout';
 import HomePage from './Pages/HomePage';
 import LogInPage from './Pages/LogInPage';
 import SignInPage from './Pages/SignInPage';
+import AdminPage from './Pages/AdminPage';
+import UserPage from './Pages/UserPage';
 
 
 const router = createBrowserRouter(
@@ -23,6 +25,14 @@ const router = createBrowserRouter(
     {
       path: '/sign-in',
       element: <SignInPage />,
+    },
+    {
+      path: '/admin',
+      element: <AdminPage />,
+    },
+    {
+      path: '/user',
+      element: <UserPage />,
     },
   ]
 )

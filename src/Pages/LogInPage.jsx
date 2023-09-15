@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import classes from './LoginPage.module.css';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../firebaseConfig';
+import Loader from '../Components/Loader';
 
 const LogInPage = () => {
   const navigate = useNavigate();
@@ -21,31 +22,21 @@ const LogInPage = () => {
   if (error) {
     console.log(error.message);
   }
-  if (loading) {
-    console.log('loading...');
-  }
 
   if (user) {
-    
-   if(user.user.uid === 'LTYY8keIOabtKGVA6q5WVaYY2Me2') {
-    navigate('/admin')
-   }
-// Aqui eu preciso mandar para um link de usuários comuns
-    navigate('/');
+    if (user.user.uid === 'LTYY8keIOabtKGVA6q5WVaYY2Me2') {
+      navigate('/admin');
+    } else {
+      navigate('/user');
+    }
   }
 
   return (
     <section className={classes['login-section']}>
-      <img
-        src={logo}
-        alt="Borarli Prestação de Serviços"
-        className='logo'
-      />
+      <img src={logo} alt="Borarli Prestação de Serviços" className="logo" />
       <h1>Seja bem-vindo de volta!</h1>
       {loading ? (
-        <div>
-          <p>Entrando...</p>
-        </div>
+        <Loader />
       ) : (
         <form onSubmit={e => logInHandler(e)}>
           <div>

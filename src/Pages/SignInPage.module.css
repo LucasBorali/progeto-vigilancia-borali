@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .register form {
@@ -48,3 +49,5 @@
 .register a:hover {
   color: red;
 }
+
+
