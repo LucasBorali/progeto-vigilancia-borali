@@ -4,7 +4,6 @@
     padding: 0 2rem;
     height: 10vh ;
     align-items: center;
-   
 }
 
 .logo-container img {
@@ -17,7 +16,7 @@
 }
 
 .login-links a  {
-    border: 2px solid #252424cc;
+    border: 2px solid var(--main-color);
     padding: 7px;
     font-weight: bold;
     transition: 0.2s;
@@ -25,13 +24,13 @@
 }
 
 .login-links a:hover {
-    background-color: #252424cc;
-    color: #fff;
+    background-color: var(--main-color);
+    color: var(--white);
 }
 
 .login-links a:last-child {
-    background-color: rgb(255, 124, 48);
-    color: #ffff;
+    background-color: var(--orange);
+    color: var(--white);
     border: none;
 }
 
