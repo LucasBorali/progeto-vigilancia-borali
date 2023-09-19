@@ -1,4 +1,5 @@
-
+import { auth } from '../firebaseConfig';
+import { usersActions } from './users-slice';
 
 export const addNewUserData = (user, uid) => {
   return async () => {
@@ -17,6 +18,43 @@ export const addNewUserData = (user, uid) => {
     };
     try {
       await sendRequest();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const fetchUserData = () => {
+  return async dispatch => {
+    try {
+      await new Promise((resolve, reject) => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+          unsubscribe();
+          if (user) {
+            resolve();
+          } else {
+            reject(new Error('User not authenticated'));
+          }
+        });
+      });
+
+      const fetchData = async () => {
+        const response = await fetch(
+          `https://ronda-8392b-default-rtdb.firebaseio.com/users/${auth.lastNotifiedUid}.json`
+        );
+
+        if (!response.ok) {
+          throw new Error('could not fetch user data!');
+        }
+
+        const data = await response.json();
+
+        return data;
+      };
+
+      const userData = await fetchData();
+
+      dispatch(usersActions.replaceUsers({ ...userData }));
     } catch (error) {
       console.log(error);
     }
