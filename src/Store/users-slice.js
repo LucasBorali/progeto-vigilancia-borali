@@ -2,20 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const usersSlice = createSlice({
   name: 'users',
-  initialState: { user : null },
+  initialState: { user: null },
   reducers: {
     replaceUsers(state, action) {
-      state.user = action.payload;
-      console.log(state.user)
-      
+      const key = Object.keys(action.payload);
+      state.user = action.payload[key];
     },
-
     callCar(state, action) {
-      console.log(state.user)
-      console.log(action.payload)
-      // state.user.callCar = action.payload.callCar
-      // state.user.reason = action.payload.reason
-      
+      state.user.reason = action.payload.reason;
+      state.user.callCar = action.payload.callCar;
+    },
+    cancelCalling(state,action) {
+      state.user.callCar = false
     }
   },
 });

@@ -28,19 +28,20 @@ const SignInPage = () => {
       address: formData.get('address'),
       phone: formData.get('phone'),
       email: formData.get('email'),
+      callCar: false,
+      reason: '',
     };
   };
 
   const createUserHandler = e => {
     e.preventDefault();
-     const userData = newUser();
+    const userData = newUser();
 
     createUserWithEmailAndPassword(email, password)
       .then(userCredential => {
         const userCred = userCredential.user;
 
         if (userCred) {
-         
           dispatch(addNewUserData(userData, userCred.uid));
           navigate('/user');
         }

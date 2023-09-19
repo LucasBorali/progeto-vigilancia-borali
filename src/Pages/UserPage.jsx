@@ -3,7 +3,7 @@ import { auth } from '../firebaseConfig';
 import { useSignOut } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserData } from '../Store/users-actions';
+import { fetchUserData, sendUserData } from '../Store/users-actions';
 import { usersActions } from '../Store/users-slice';
 
 const UserPage = () => {
@@ -12,8 +12,7 @@ const UserPage = () => {
   const navigate = useNavigate();
   const [signOut, loading, error] = useSignOut(auth);
 
-  const user = useSelector(state => state.users);
-  const key = user.user !== null && Object.keys(user.user);
+  const user = useSelector(state => state.users.user);
 
   useEffect(() => {
     dispatch(fetchUserData());
@@ -21,14 +20,19 @@ const UserPage = () => {
 
   const callCarHandler = e => {
     e.preventDefault();
-    const formData = {
-      callCar: true,
-      reason: 'escolta',
-    };
 
-    dispatch(usersActions.callCar(formData));
-
+    dispatch(
+      usersActions.callCar({
+        callCar: true,
+        reason: 'escolta',
+      })
+    );
   };
+
+  if (user && user.callCar) {
+    dispatch(sendUserData(user));
+    dispatch(usersActions.cancelCalling());
+  }
 
   return (
     <div>

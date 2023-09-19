@@ -60,3 +60,19 @@ export const fetchUserData = () => {
     }
   };
 };
+
+export const sendUserData = userData => {
+  return async () => {
+    const response = await fetch(
+      `https://ronda-8392b-default-rtdb.firebaseio.com/users/${auth.lastNotifiedUid}.json`,
+      {
+        method: 'PUT',
+        body: JSON.stringify({ userData }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Sending user data failed');
+    }
+  };
+};
