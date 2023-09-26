@@ -57,6 +57,7 @@ export const fetchUserData = () => {
       dispatch(usersActions.replaceUsers({ ...userData }));
     } catch (error) {
       console.log(error);
+      // mexer aqui usando redirect
     }
   };
 };
