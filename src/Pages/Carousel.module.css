@@ -1,0 +1,77 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+
+.carousel img {
+  width: 100vw;
+  height: 90vh;
+  object-fit: cover;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  width: 90vw;
+  position: absolute;
+  bottom: 2rem;
+  z-index: 2;
+}
+
+.buttons button {
+  width: 15px;
+  height: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.buttons button:hover {
+  opacity: 1;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.notActive {
+  opacity: 0.5;
+}
+
+.hero {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 50vw;
+  padding-left: 10vw;
+  color: white;
+  background: linear-gradient(90deg, rgb(0, 0, 0), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-weight: 300;
+  font-size: 4rem;
+}
+
+.hero a {
+  background-color: var(--orange);
+  width: 150px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.hero a:hover {
+  background-color: red;
+}
